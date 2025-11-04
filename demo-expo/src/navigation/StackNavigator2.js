@@ -8,7 +8,7 @@ export default function StackNavigator2() {
     return (
         <Stack.Navigator>
             <Stack.Screen name="Home" component={Home} options={{headerShown: false}}/>
-
+            <Stack.Screen name="Comentarios" component={Comentarios} options={{headerShown: false}}/>
         </Stack.Navigator>
     )
 }

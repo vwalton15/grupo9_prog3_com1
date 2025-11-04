@@ -5,13 +5,14 @@ import FontAwesome from '@expo/vector-icons/FontAwesome';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import NewPost from '../screens/NewPost';
+import StackNavigator2 from './StackNavigator2';
 
 const Tab = createBottomTabNavigator();
 
 export default function TabNavigator() {
     return(
         <Tab.Navigator screenOptions={{ tabBarShowLabel: false }}>
-            <Tab.Screen name= "Home" component={ Home } options={{ tabBarIcon: () => <FontAwesome name="home" size={24} color="black" />, headerShown: false}} />
+             <Tab.Screen name= "StackNavigator2" component={ StackNavigator2 } options={{ tabBarIcon: () => <FontAwesome name="home" size={24} color="black" />, headerShown: false}} />
              <Tab.Screen name= "NewPost" component={ NewPost } options={{ tabBarIcon: () => <Ionicons name="add-circle-outline" size={24} color="black" />, headerShown: false}} />
         </Tab.Navigator>
     )

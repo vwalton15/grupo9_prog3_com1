@@ -51,7 +51,7 @@ export default class Post extends Component {
   }
   render() {
     return (
-      <View>
+      <View style={styles.container}>
         <Text>{this.props.data.owner}</Text>
         <Text>{this.props.data.post}</Text>
         <Text>{this.props.data.descripcion}</Text>
@@ -65,7 +65,16 @@ export default class Post extends Component {
           </Pressable>
         )}
         <Text>{this.state.cantLikes}</Text>
+        <Pressable style={styles.button} onPress={() => navigation.navigate("Comentarios") } >
+          <Text>Comentar</Text>
+        </Pressable>
       </View>
     );
   }
 }
+const styles = StyleSheet.create({
+  container: { padding: 12 },
+  owner: { fontWeight: '600' },
+  post: { marginTop: 6 },
+  desc: { color: '#555', marginTop: 4 },
+});

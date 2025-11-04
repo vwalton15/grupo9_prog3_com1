@@ -1,18 +1,17 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, FlatList,Pressable } from 'react-native';
+import { Text, View, StyleSheet, FlatList } from 'react-native';
 import { db } from '../firebase/config';
 import Post from '../components/Post';
 
-
 export default class Home extends Component {
-  constructor(props){
+  constructor(props) {
     super(props)
     this.state = {
       postsRecuperados: []
     }
   }
 
-  componentDidMount(){
+  componentDidMount() {
     db.collection('posts').orderBy('createdAt', 'desc').onSnapshot((docs) => {
       let postsDocs = []
 
@@ -33,14 +32,17 @@ export default class Home extends Component {
     return (
       <View style={styles1.container}>
         <Text style={styles1.title}>Home</Text>
+
         <View style={styles1.formContainer}>
-          <FlatList 
-          data={this.state.postsRecuperados}
-          keyExtractor={item => item.id}
-          renderItem={({item}) => <Post data={item.data} id={item.id} navigation={this.props.navigation}/>}/>
-         
+          <FlatList
+            data={this.state.postsRecuperados}
+            keyExtractor={(item) => item.id}
+            renderItem={({ item }) => (
+              <Post data={item.data} id={item.id} navigation={this.props.navigation} />
+            )}
+          />
         </View>
-        
+
       </View>
     )
   }
@@ -49,24 +51,37 @@ export default class Home extends Component {
 const styles1 = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f8f8f8',
+    backgroundColor: '#fff7fa',
     alignItems: 'center',
-    paddingTop: 40,
-   
+    justifyContent: 'center',
+    paddingTop: 50,
   },
   title: {
-    fontSize: 28,
-    fontWeight: 'bold',
-    color: '#2c2c2c',
-    marginBottom: 10,
+    fontSize: 30,
+    fontWeight: '800',
+    color: '#000',
+    marginBottom: 20,
   },
-  
   formContainer: {
     width: '100%',
     backgroundColor: '#fff',
-    borderRadius: 12,
-    padding: 15,
-    
+    borderRadius: 20,
+    padding: 20,
+    borderWidth: 1,
+    borderColor: '#f5b6c2',
   },
-  
-})
+  flatList: {
+    width: '100%',
+    marginTop: 15,
+  },
+  postCard: {
+    backgroundColor: '#fffafc',
+    borderRadius: 16,
+    padding: 15,
+    marginBottom: 12,
+  },
+  postText: {
+    fontSize: 16,
+    color: '#3a3a3a',
+  },
+});

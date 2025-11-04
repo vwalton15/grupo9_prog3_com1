@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { View, Text, Pressable, TextInput, StyleSheet } from "react-native";
-import { db , auth } from "../firebase/config";
+import { db, auth } from "../firebase/config";
 
 
 export default class Register extends Component {
@@ -111,13 +111,13 @@ export default class Register extends Component {
   }
 }
 
-const styles= StyleSheet.create({
-    container: { flex: 1, padding: 16, justifyContent: "center" },
-    title: { fontSize: 24, fontWeight: "600", marginBottom: 12, textAlign: "center" },
-    box: { gap: 12, padding: 16, borderWidth: 1, borderColor: "#ddd", borderRadius: 8 },
-    input: { borderWidth: 1, borderColor: "#ccc", borderRadius: 6, padding: 10 },
-    button: { backgroundColor: "#222", padding: 12, borderRadius: 6, marginTop: 8, alignItems: "center" },
-    buttonText: { color: "#fff", fontWeight: "600" },
-    buttonSecondary: { padding: 10, alignItems: "center" },
-    buttonTextSecondary: { color: "#007aff" },
+const styles = StyleSheet.create({
+  container: { flex: 1, padding: 16, justifyContent: "center" },
+  title: { fontSize: 24, fontWeight: "600", marginBottom: 12, textAlign: "center" },
+  box: { gap: 12, padding: 16, borderWidth: 1, borderColor: "#ddd", borderRadius: 8 },
+  input: { borderWidth: 1, borderColor: "#ccc", borderRadius: 6, padding: 10 },
+  button: { backgroundColor: "#222", padding: 12, borderRadius: 6, marginTop: 8, alignItems: "center" },
+  buttonText: { color: "#fff", fontWeight: "600" },
+  buttonSecondary: { padding: 10, alignItems: "center" },
+  buttonTextSecondary: { color: "#007aff" },
 })

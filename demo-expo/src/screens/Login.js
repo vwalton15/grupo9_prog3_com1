@@ -12,32 +12,32 @@ export default class Login extends Component {
       error: '',
     };
   }
-  onSubmit( email, password) {
+  onSubmit(email, password) {
     console.log("Guardando los valores", { email, password });
 
-    if (!(email.includes("@"))){
-      this.setState({error : 'Email mal formateado'})
+    if (!(email.includes("@"))) {
+      this.setState({ error: 'Email mal formateado' })
       return
     };
     if (password.length < 6) {
-      this.setState({ error: 'La password debe tener al menos 6 caracteres'})
+      this.setState({ error: 'La password debe tener al menos 6 caracteres' })
       return
     }
 
-       auth.signInWithEmailAndPassword(email, password)
-    .then((user) => {
-       this.props.navigation.navigate('TabNavigator')
-    })
-    .catch(error => {
-      this.setState({error: 'Credenciales inválidas.'})
-    })
+    auth.signInWithEmailAndPassword(email, password)
+      .then((user) => {
+        this.props.navigation.navigate('TabNavigator')
+      })
+      .catch(error => {
+        this.setState({ error: 'Credenciales inválidas.' })
+      })
 
   }
   render() {
     return (
       <View style={styles.container}>
         <Text style={styles.title}>Login</Text>
-      
+
         <Pressable
           style={styles.button}
           onPress={() => this.props.navigation.navigate("Register")}
@@ -76,13 +76,13 @@ export default class Login extends Component {
     );
   }
 }
-const styles= StyleSheet.create({
-    container: { flex: 1, padding: 16, justifyContent: "center" },
-    title: { fontSize: 24, fontWeight: "600", marginBottom: 12, textAlign: "center" },
-    box: { gap: 12, padding: 16, borderWidth: 1, borderColor: "#ddd", borderRadius: 8 },
-    input: { borderWidth: 1, borderColor: "#ccc", borderRadius: 6, padding: 10 },
-    button: { backgroundColor: "#222", padding: 12, borderRadius: 6, marginTop: 8, alignItems: "center" },
-    buttonText: { color: "#fff", fontWeight: "600" },
-    buttonSecondary: { padding: 10, alignItems: "center" },
-    buttonTextSecondary: { color: "#007aff" },
+const styles = StyleSheet.create({
+  container: { flex: 1, padding: 16, justifyContent: "center" },
+  title: { fontSize: 24, fontWeight: "600", marginBottom: 12, textAlign: "center" },
+  box: { gap: 12, padding: 16, borderWidth: 1, borderColor: "#ddd", borderRadius: 8 },
+  input: { borderWidth: 1, borderColor: "#ccc", borderRadius: 6, padding: 10 },
+  button: { backgroundColor: "#222", padding: 12, borderRadius: 6, marginTop: 8, alignItems: "center" },
+  buttonText: { color: "#fff", fontWeight: "600" },
+  buttonSecondary: { padding: 10, alignItems: "center" },
+  buttonTextSecondary: { color: "#007aff" },
 })

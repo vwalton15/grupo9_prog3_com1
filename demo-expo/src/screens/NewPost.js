@@ -17,7 +17,7 @@ export default class NewPost extends Component {
           createdAt: Date.now(),
           post: descripcion,
         })
-        .then((resp) => this.props.navigation.navigate("StackNavigator2", { screen: "Home"}))
+        .then((resp) => this.props.navigation.navigate("StackNavigator2", { screen: "Home" }))
         .catch((err) => console.log(err));
     }
   }

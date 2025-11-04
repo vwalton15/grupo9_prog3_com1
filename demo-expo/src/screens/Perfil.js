@@ -43,11 +43,11 @@ export default class Comentarios extends Component {
             });
         });
     }
-    eliminarPost(post) {
+    eliminarPost(id) {
             db.collection("users")
                 .doc(auth.currentUser.email)
                 .update({
-                    posteos: firebase.firestore.FieldValue.arrayRemove(post),
+                    posteos: firebase.firestore.FieldValue.arrayRemove(id),
                 })
                 .then(() => console.log("Posteo eliminado"))
                 .catch((error) => console.log(error));

@@ -12,8 +12,8 @@ export default class Login extends Component {
       error: '',
     };
   }
-  onSubmit(username, email, password, error) {
-    console.log("Guardando los valores", { email, username, password });
+  onSubmit( email, password) {
+    console.log("Guardando los valores", { email, password });
 
     if (!(email.includes("@"))){
       this.setState({error : 'Email mal formateado'})
@@ -37,24 +37,7 @@ export default class Login extends Component {
     return (
       <View style={styles.container}>
         <Text style={styles.title}>Login</Text>
-        <Pressable
-          style={styles.button}
-          onPress={() =>
-            this.props.navigation.navigate("TabNavigator", { screen: "Home" })
-          }
-        >
-          <Text style={styles.buttonText}>Ir a Home</Text>
-        </Pressable>
-        <Pressable
-          style={styles.button}
-          onPress={() =>
-            this.props.navigation.navigate("TabNavigator", {
-              screen: "Profile",
-            })
-          }
-        >
-          <Text style={styles.buttonText}>Ir a tu Perfil</Text>
-        </Pressable>
+      
         <Pressable
           style={styles.button}
           onPress={() => this.props.navigation.navigate("Register")}

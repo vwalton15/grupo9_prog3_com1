@@ -37,7 +37,7 @@ export default class Home extends Component {
           <FlatList 
           data={this.state.postsRecuperados}
           keyExtractor={item => item.id}
-          renderItem={({item}) => <Post data={item.data} id={item.id}/>}/>
+          renderItem={({item}) => <Post data={item.data} id={item.id} navigation={this.props.navigation}/>}/>
          
         </View>
         

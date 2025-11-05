@@ -59,7 +59,7 @@ export default class Comentarios extends Component {
                         )
 
                         }
-                    />) : (<Text>No hay posteos aun</Text>)}
+                    />) : (<Text style={styles.text}>No hay posteos aun</Text>)}
                 <Pressable style={styles.boton} onPress={() => auth.signOut()}>
                     <Text style={styles.botonText}>Desloguearse</Text>
                 </Pressable>
@@ -74,8 +74,10 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff7fa',
         padding: 16,
         alignItems: 'center',
+        justifyContent: 'flex-start'
     },
     card: {
+        flex: 1,
         backgroundColor: '#fffafc',
         borderRadius: 12,
         padding: 15,
@@ -110,6 +112,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         marginBottom: 12,
         fontWeight: '400',
+        marginTop: 0
     },
     text: {
         fontSize: 16,

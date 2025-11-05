@@ -12,6 +12,18 @@ export default class Login extends Component {
       error: '',
     };
   }
+  componentDidMount(){
+    auth.onAuthStateChanged( user => {
+      
+      if (user) {
+        this.props.navigation.navigate('TabNavigator');
+      }  else {
+        this.props.navigation.navigate('Login');
+      }
+      console.log(user);
+      
+    })
+  }
   onSubmit(email, password) {
     console.log("Guardando los valores", { email, password });
 

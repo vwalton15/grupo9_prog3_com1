@@ -53,7 +53,7 @@ const styles1 = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff7fa',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
     paddingTop: 50,
   },
   title: {
@@ -63,6 +63,7 @@ const styles1 = StyleSheet.create({
     marginBottom: 20,
   },
   formContainer: {
+    flex: 1,
     width: '100%',
     backgroundColor: '#fff',
     borderRadius: 20,

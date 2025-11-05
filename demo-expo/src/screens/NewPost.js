@@ -14,8 +14,10 @@ export default class NewPost extends Component {
       db.collection("posts")
         .add({
           owner: auth.currentUser.email,
-          createdAt: Date.now(),
           post: descripcion,
+          createdAt: Date.now(),
+          likes: [],
+          comentarios: []
         })
         .then((resp) => this.props.navigation.navigate("StackNavigator2", { screen: "Home" }))
         .catch((err) => console.log(err));

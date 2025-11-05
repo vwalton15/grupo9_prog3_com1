@@ -1,4 +1,3 @@
-import React from 'react';
 import { View, Text, FlatList, Pressable, StyleSheet } from 'react-native'
 import { db, auth } from '../firebase/config';
 import { Component } from 'react';
@@ -38,8 +37,6 @@ export default class Comentarios extends Component {
                     });
                 });
                 this.setState({ posteos: posteosDoc });
-                console.log(this.state.posteos);
-
             });
         });
     }

@@ -12,31 +12,33 @@ export default class Post extends Component {
     };
   }
   componentDidMount() {
-    const likes = this.props.data.likes ? this.props.data.length : 0;
-    const likeado =
-      this.props.data.likes &&
-      this.props.data.likes.includes(auth.currentUser.email);
-    this.setState({
-      cantLikes: likes,
-      likeado: likeado,
-    });
-  }
+    db.collection("posts")
+      .doc(this.props.id)
+      .onSnapshot((doc) => {
+        const data = doc.data()
+        const likes = data.likes ? data.likes : [];
+        const likeado = likes.includes(auth.currentUser.email)
+        this.setState({
+          likeado: likeado,
+          cantLikes: likes.length
+        })
+      })
+    }
   agregarLike() {
     db.collection("posts")
-      .doc(docId)
+      .doc(this.props.id)
       .update({
         likes: firebase.firestore.FieldValue.arrayUnion(auth.currentUser.email),
       })
       .then(() =>
         this.setState({
-          likeado: true,
-          cantLikes: this.state.cantLikes + 1,
+          likeado: true
         })
       );
   }
   sacarLike() {
     db.collection("posts")
-      .doc(docId)
+      .doc(this.props.id)
       .update({
         likes: firebase.firestore.FieldValue.arrayRemove(
           auth.currentUser.email
@@ -44,8 +46,7 @@ export default class Post extends Component {
       })
       .then(() =>
         this.setState({
-          likeado: true,
-          cantLikes: this.state.cantLikes - 1,
+          likeado: false
         })
       );
   }
@@ -64,8 +65,9 @@ export default class Post extends Component {
             <Text>Like</Text>
           </Pressable>
         )}
-        <Text>{this.state.cantLikes}</Text>
-        <Pressable style={styles.button} onPress={() => this.props.navigation.navigate("Comentarios")} >
+        <Text>{this.state.cantLikes} Likes</Text>
+        <Pressable
+          onPress={() => this.props.navigation.navigate("Comentarios", { id: this.props.id}) }>
           <Text>Comentar</Text>
         </Pressable>
       </View>
@@ -74,7 +76,7 @@ export default class Post extends Component {
 }
 const styles = StyleSheet.create({
   container: { padding: 12 },
-  owner: { fontWeight: '600' },
+  owner: { fontWeight: "600" },
   post: { marginTop: 6 },
-  desc: { color: '#555', marginTop: 4 },
+  desc: { color: "#555", marginTop: 4 },
 });

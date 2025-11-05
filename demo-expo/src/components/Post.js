@@ -75,7 +75,14 @@ export default class Post extends Component {
   }
 }
 const styles = StyleSheet.create({
-  container: { padding: 12 },
+  container: {  
+    backgroundColor: '#fffafc',
+    borderRadius: 15,
+    padding: 10,
+    marginBottom: 10,
+    borderWidth: 1,
+    borderColor: '#f5b6c2',
+  },
   owner: { fontWeight: "600" },
   post: { marginTop: 6 },
   desc: { color: "#555", marginTop: 4 },

@@ -44,13 +44,13 @@ export default class Comentarios extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <Text style={styles.sectionTitle}>Usuario:</Text>
+                <Text style={styles.sectionTitle}>Mi perfil</Text>
                 <FlatList
                     data={this.state.usuario}
                     keyExtractor={item => item.id}
-                    renderItem={({ item }) => <View style={styles.card}><Text style={styles.text}>{item.user}</Text></View>}
+                    renderItem={({ item }) => <View ><Text style={styles.user}> @{item.user}</Text></View>}
                 />
-                <Text style={styles.sectionTitle}>Mis Posteos:</Text>
+                <Text style={styles.sectionTitle2}>Mis Posteos:</Text>
                 {this.state.posteos.length != 0 ? (
                     <FlatList
                         data={this.state.posteos}
@@ -75,23 +75,41 @@ const styles = StyleSheet.create({
         padding: 16,
         alignItems: 'center',
     },
+    card: {
+        backgroundColor: '#fffafc',
+        borderRadius: 12,
+        padding: 15,
+        marginBottom: 12,
+        borderWidth: 1,
+        borderColor: '#f5b6c2',
+      },
     title: {
         fontSize: 24,
         color: '#222',
     },
-    sectionTitle: {
-        fontSize: 24,
+    user: {
+        fontSize: 27,
         color: '#111',
         textAlign: 'center',
         margin: 8,
+        fontWeight: '300',
+        fontFamily: 'Georgia',
+        
     },
-    card: {
-        backgroundColor: '#fff6fa',
-        borderRadius: 12,
-        padding: 10,
-        width: '92%',
-        alignItems: 'flex-start',
-        margin: 6,
+    sectionTitle: {
+        fontSize: 30,
+        color: '#111',
+        textAlign: 'center',
+        margin: 8,
+        fontWeight: '500',
+        marginTop: 60
+    },
+    sectionTitle2: {
+        fontSize: 25,
+        color: '#111',
+        textAlign: 'center',
+        marginBottom: 12,
+        fontWeight: '400',
     },
     text: {
         fontSize: 16,

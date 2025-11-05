@@ -56,12 +56,13 @@ export default class Register extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.title}>Register</Text>
+        <Text style={styles.title2}>¡Bienvenido! Crea tu cuenta</Text>
+        <Text>¿Ya tenes cuenta?</Text>
         <Pressable
           style={styles.button2}
           onPress={() => this.props.navigation.navigate("Login")}
         >
-          <Text style={styles.buttonText2}>Tenes cuenta? Inicia Sesión </Text>
+          <Text style={styles.buttonText2}> Inicia Sesión </Text>
         </Pressable>
 
         <View style={styles.box}>
@@ -103,7 +104,7 @@ export default class Register extends Component {
               )
             }
           >
-            <Text style={styles.buttontext}>Enviar registro</Text>
+            <Text style={styles.buttonText}>Enviar registro</Text>
           </Pressable>
         </View>
       </View>
@@ -112,12 +113,87 @@ export default class Register extends Component {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, padding: 16, justifyContent: "center" },
-  title: { fontSize: 24, fontWeight: "600", marginBottom: 12, textAlign: "center" },
-  box: { gap: 12, padding: 16, borderWidth: 1, borderColor: "#ddd", borderRadius: 8 },
-  input: { borderWidth: 1, borderColor: "#ccc", borderRadius: 6, padding: 10 },
-  button: { backgroundColor: "#222", padding: 12, borderRadius: 6, marginTop: 8, alignItems: "center" },
-  buttonText: { color: "#fff", fontWeight: "600" },
-  buttonSecondary: { padding: 10, alignItems: "center" },
-  buttonTextSecondary: { color: "#007aff" },
+  input: { 
+    borderWidth: 1, 
+    borderColor: '#f9c5c8', 
+    borderRadius: 6, 
+    padding: 10 ,
+    backgroundColor: '#fefcf8',
+     fontWeight: "400"
+
+},
+ 
+    box: {
+    backgroundColor: '#fff7fa',
+    padding: 10,
+    alignItems: 'center',
+    gap: 12,
+    borderWidth: 3,
+    borderRadius: 8,
+    borderColor: '#f9c5c8',
+    width: 320,
+    height: 320
+},
+container: {flex: 1,
+backgroundColor: '#fff7fa',
+padding: 16,
+alignItems: 'center',
+gap: 12,
+},
+title: {
+    fontSize: 22,
+    color: '#4a2f2f',
+    fontWeight: '700',
+    marginBottom: 20,
+    textAlign: 'center',
+  },
+
+title2: {
+    fontSize: 22,
+    color: '#4a2f2f',
+    fontWeight: '700',
+    marginBottom: 20,
+    textAlign: 'center',
+   marginTop: 30
+  },
+sectionTitle: {
+    fontSize: 24,
+    color: '#111',
+    textAlign: 'center',
+    margin: 8,
+},
+card: {
+    backgroundColor: '#fff6fa',
+    borderRadius: 12,
+    padding: 10,
+    width: '92%',
+    alignItems: 'flex-start',
+    margin: 6,
+},
+text: {
+    fontSize: 16,
+    color: '#222',
+    textAlign: 'left',
+},
+button: {
+    backgroundColor: '#f9c5c8',
+    width: '80%',
+    alignItems: 'center',
+    padding: 14,
+    borderRadius: 10, 
+    marginTop: 8,  
+},
+buttonText: {
+    fontSize: 16,
+    color: '#4a2f2f',
+    fontWeight: '600',
+},
+buttonText2: {
+    fontSize: 16,
+    fontWeight: "600",
+    color: '#000',
+    marginBottom: 10,
+    alignItems: 'center',
+
+},
 })

@@ -96,7 +96,8 @@ const styles = StyleSheet.create({
         borderRadius: 8,
         borderColor: '#f9c5c8',
         width: 280,
-        height: 280
+        height: 280,
+        marginTop: 50
     },
     container: {flex: 1,
     backgroundColor: '#fff7fa',
@@ -116,9 +117,9 @@ const styles = StyleSheet.create({
         fontSize: 22,
         color: '#4a2f2f',
         fontWeight: '700',
-        marginBottom: 20,
+        marginBottom: 10,
         textAlign: 'center',
-       marginTop: 30
+       marginTop: 100
       },
     sectionTitle: {
         fontSize: 24,

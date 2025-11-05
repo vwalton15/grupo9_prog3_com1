@@ -7,7 +7,6 @@ export default class Comentarios extends Component {
   constructor(props){
     super(props)
     this.state = {
-      comentarios: [],
       post: '',
       comentario: '',
     }
@@ -19,8 +18,8 @@ export default class Comentarios extends Component {
      .doc(postId)
      .onSnapshot((doc) => {
       this.setState({
-        post: doc.data(),
-        comentarios: data.comentarios ? data.comentarios : [],
+        data: post.data(),
+        comentarios: data.comentarios ? data.comentarios : []
       })
      })
   }

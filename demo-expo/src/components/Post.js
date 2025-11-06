@@ -11,15 +11,10 @@ export default class Post extends Component {
     };
   }
   componentDidMount(){
-    db.collection('posts')
-    .doc(this.props.id)
-    .onSnapshot(doc => {
-      const likes = doc.data().likes
-      console.log(likes)
-      this.setState({
-        cantLikes:likes.length,
-      })
-    })
+     let likeado = this.props.data.likes.includes(auth.currentUser.email) 
+     this.setState({
+      likeado: likeado
+     })
   }
     
   agregarLike() {
@@ -64,7 +59,7 @@ export default class Post extends Component {
             <Text style={styles.buttonText}>Like</Text>
           </Pressable>
         )}
-        <Text>{this.state.cantLikes} ❤️</Text>
+        <Text>{this.props.data.likes.length} ❤️</Text>
         <Pressable
         style={styles.button}
           onPress={() => this.props.navigation.navigate("Comentarios", { id: this.props.id}) }>

@@ -50,21 +50,25 @@ export default class Comentarios extends Component {
   render() {
     return (
       <View style={styles1.container}>
-        <View style={styles1.postCard}>
-          <Text>Hecho por: {this.state.owner}</Text>
+    
+        <View style={styles1.post}>
+          <Text style={styles1.owner}>{this.state.owner}</Text>
           <Text style={styles1.postText}>{this.state.post}</Text>
         </View>
-
+       
         <Text style={styles1.title}>Comentarios</Text>
         { this.state.comentarios.length != 0 ?
          <FlatList style={styles1.flatList} data={this.state.comentarios} keyExtractor={(item) => item.id} 
-        renderItem={({ item }) => <Text>{item.user}{item.descripcion}</Text> }/> :
+        renderItem={({ item }) => (
+          <View style={styles1.commentBox}>
+            <Text style={styles1.comentarios}>{item.user}: {item.descripcion}</Text>
+          </View>
+        )}/> :
         <Text>Aún no hay comentarios.</Text> 
         }
-        
+         <Text style={styles1.subtitle}>Agrega tu comentario!</Text>
         <View style={styles1.formContainer} >
-          <Text style={styles1.subtitle}>Agrega tu comentario!</Text>
-        <TextInput style={styles1.input}
+        <TextInput 
           placeholder="Deja tu comentario acá.."
           onChangeText={(text) => this.setState({ comentario: text })}
           keyboardType="default"
@@ -88,51 +92,84 @@ const styles1 = StyleSheet.create({
     paddingTop: 50,
   },
   title: {
-    fontSize: 24,
+    fontSize: 20,
     fontWeight: '700',
     color: '#000',
     marginBottom: 20,
   },
   formContainer: {
-    flex: 1,
-    width: '70%',
-    backgroundColor: '#fff',
-    borderRadius: 20,
-    padding: 20,
+    width: '75%',
+    backgroundColor: '#fffef8',
+    borderRadius: 16,
+    padding: 16,
     borderWidth: 1,
     borderColor: '#f5b6c2',
+    marginTop: 20,
+    alignSelf: 'center',
+    maxHeight: 120, 
+    marginBottom: 50
+   
   },
   flatList: {
     width: '100%',
     marginTop: 15,
   },
-  postCard: {
-    backgroundColor: '#fffafc',
-    borderRadius: 16,
-    padding: 15,
-    marginBottom: 12,
-  },
+
   input: {
-    width: "80%",
-    height: 30,
-    paddingVertical: 10,
-    paddingHorizontal: 10,
+    width: '100%',
+    height: 44,
+    backgroundColor: '#fff3f4',
     borderWidth: 1,
-    borderColor: "#ccc",
-    borderRadius: 3,
-    marginVertical: 10,
-    textAlignVertical: "top",
+    borderColor: '#f5b6c2',
+    borderRadius: 12,
+    paddingHorizontal: 12,
+    marginBottom: 12,
   },
     button: {
     backgroundColor: '#f5b6c2',
     paddingVertical: 12,
-    borderRadius: 3,
-    alignItems: "center",
-    width: "100%",
+    borderRadius: 12,
+    alignItems: 'center',
+    width: '100%',
+    marginTop: 20
   },
     buttonText: {
-    color: "#fff",
-    fontWeight: "bold",
+      color: '#4a2f2f',
+    fontWeight: '700',
     fontSize: 16,
+  },
+  owner: { fontWeight: "20" , fontSize: 12},
+  post: { marginTop: 7, 
+    fontSize: 18 ,     
+    backgroundColor: '#fffafc',   
+    borderWidth: 1,
+    borderColor: '#f5b6c2',
+    borderRadius: 16,
+    padding: 15,
+    marginBottom: 12,
+  width: '80%'},
+    comentarios:{
+      marginTop: 7,
+      marginLeft: 10,
+       fontSize: 13 ,       
+      borderRadius: 18,
+      padding: 10,
+      marginBottom: 12, 
+      fontWeight: "60",
+      width: '75%',
+    },
+  desc: { color: "#555", marginTop: 4 },
+  commentBox: {
+    borderWidth: 1,
+    borderColor: '#f5b6c2',
+    backgroundColor: '#fafafa',
+    borderRadius: 12,
+    padding: 8,
+    marginVertical: 5,
+    width: '75%',
+    alignSelf: 'center',
+  },
+  subtitle:{
+    marginTop: 10
   },
 });

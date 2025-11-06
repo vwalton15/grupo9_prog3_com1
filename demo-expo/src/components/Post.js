@@ -8,22 +8,20 @@ export default class Post extends Component {
     super(props);
     this.state = {
       likeado: false,
-      valorLikes: 0,
     };
   }
-  componentDidMount() {
-    db.collection("posts")
-      .doc(this.props.id)
-      .onSnapshot((doc) => {
-        const data = doc.data()
-        const likes = data.likes ? data.likes : [];
-        const likeado = likes.includes(auth.currentUser.email)
-        this.setState({
-          likeado: likeado,
-          cantLikes: likes.length
-        })
+  componentDidMount(){
+    db.collection('posts')
+    .doc(this.props.id)
+    .onSnapshot(doc => {
+      const likes = doc.data().likes
+      console.log(likes)
+      this.setState({
+        cantLikes:likes.length,
       })
-    }
+    })
+  }
+    
   agregarLike() {
     db.collection("posts")
       .doc(this.props.id)

@@ -50,7 +50,7 @@ export default class Comentarios extends Component {
   render() {
     return (
       <View style={styles1.container}>
-    
+        <Text style={styles1.title}>Post</Text>
         <View style={styles1.post}>
           <Text style={styles1.owner}>{this.state.owner}</Text>
           <Text style={styles1.postText}>{this.state.post}</Text>
@@ -92,10 +92,11 @@ const styles1 = StyleSheet.create({
     paddingTop: 50,
   },
   title: {
-    fontSize: 20,
-    fontWeight: '700',
+    fontSize: 18,
+    fontWeight: '400',
     color: '#000',
-    marginBottom: 20,
+    marginBottom: 2,
+    marginTop: 4
   },
   formContainer: {
     width: '75%',
@@ -142,12 +143,12 @@ const styles1 = StyleSheet.create({
   post: { marginTop: 7, 
     fontSize: 18 ,     
     backgroundColor: '#fffafc',   
-    borderWidth: 1,
+    borderWidth: 3,
     borderColor: '#f5b6c2',
     borderRadius: 16,
-    padding: 15,
+    padding: 17,
     marginBottom: 12,
-  width: '80%'},
+  width: '85%'},
     comentarios:{
       marginTop: 7,
       marginLeft: 10,
@@ -164,9 +165,9 @@ const styles1 = StyleSheet.create({
     borderColor: '#f5b6c2',
     backgroundColor: '#fafafa',
     borderRadius: 12,
-    padding: 8,
+    padding: 5,
     marginVertical: 5,
-    width: '75%',
+    width: '65%',
     alignSelf: 'center',
   },
   subtitle:{

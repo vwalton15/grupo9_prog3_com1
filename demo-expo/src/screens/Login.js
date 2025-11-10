@@ -27,12 +27,16 @@ export default class Login extends Component {
   onSubmit(email, password) {
     console.log("Guardando los valores", { email, password });
 
+    if (email === "" || password === "") {
+      this.setState({ error: "Debe completar todos los campos" });
+      return
+    }
     if (!(email.includes("@"))) {
       this.setState({ error: 'Email mal formateado' })
       return
     };
     if (password.length < 6) {
-      this.setState({ error: 'La password debe tener al menos 6 caracteres' })
+      this.setState({ error: 'La contraseña debe tener al menos 6 caracteres' })
       return
     }
 
@@ -41,7 +45,7 @@ export default class Login extends Component {
         this.props.navigation.navigate('TabNavigator')
       })
       .catch(error => {
-        this.setState({ error: 'Credenciales inválidas.' })
+        this.setState({ error: this.state.error })
       })
 
   }

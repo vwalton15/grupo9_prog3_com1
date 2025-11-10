@@ -20,22 +20,11 @@ export default class Register extends Component {
       email,
       password,
     });
-
-    if (username.length < 3) {
-      this.setState({ error: "el usuario debe tener al menos 3 caracteres" });
-      return;
+    if (email === "" || password === "" || email === "") {
+      this.setState({ error: "Debe completar todos los campos" });
+      return
     }
-
-    if (!(email.includes("@"))) {
-      this.setState({ error: "el mail debe contener @" });
-      return;
-    }
-    if (password.length < 6) {
-      this.setState({
-        error: "La contraseña debe tener al menos 6 caracteres",
-      });
-      return;
-    }
+   
     auth
       .createUserWithEmailAndPassword(email, password)
       .then((user) => {
@@ -49,7 +38,7 @@ export default class Register extends Component {
         this.props.navigation.navigate("TabNavigator");
       })
       .catch((error) => {
-        this.setState({ error: "Credenciales inválidas." });
+        this.setState({ error: error.message });
         console.log(error);
       });
   }

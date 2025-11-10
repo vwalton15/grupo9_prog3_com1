@@ -113,17 +113,17 @@ export default class Register extends Component {
 }
 
 const styles = StyleSheet.create({
-  input: { 
-    borderWidth: 1, 
-    borderColor: '#f9c5c8', 
-    borderRadius: 6, 
-    padding: 10 ,
+  input: {
+    borderWidth: 1,
+    borderColor: '#f9c5c8',
+    borderRadius: 6,
+    padding: 10,
     backgroundColor: '#fefcf8',
-     fontWeight: "400"
+    fontWeight: "400"
 
-},
- 
-    box: {
+  },
+
+  box: {
     backgroundColor: '#fff7fa',
     padding: 10,
     alignItems: 'center',
@@ -132,16 +132,16 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     borderColor: '#f9c5c8',
     width: 320,
-    height: 320, 
     marginTop: 50
-},
-container: {flex: 1,
-backgroundColor: '#fff7fa',
-padding: 16,
-alignItems: 'center',
-gap: 12,
-},
-title: {
+  },
+  container: {
+    flex: 1,
+    backgroundColor: '#fff7fa',
+    padding: 16,
+    alignItems: 'center',
+    gap: 12,
+  },
+  title: {
     fontSize: 22,
     color: '#4a2f2f',
     fontWeight: '700',
@@ -149,52 +149,51 @@ title: {
     textAlign: 'center',
   },
 
-title2: {
+  title2: {
     fontSize: 22,
     color: '#4a2f2f',
     fontWeight: '700',
     marginBottom: 10,
     textAlign: 'center',
-   marginTop: 100
+    marginTop: 100
   },
-sectionTitle: {
+  sectionTitle: {
     fontSize: 24,
     color: '#111',
     textAlign: 'center',
     margin: 8,
-},
-card: {
+  },
+  card: {
     backgroundColor: '#fff6fa',
     borderRadius: 12,
     padding: 10,
-    width: '92%',
     alignItems: 'flex-start',
     margin: 6,
-},
-text: {
+  },
+  text: {
     fontSize: 16,
     color: '#222',
     textAlign: 'left',
-},
-button: {
+  },
+  button: {
     backgroundColor: '#f9c5c8',
     width: '80%',
     alignItems: 'center',
     padding: 14,
-    borderRadius: 10, 
-    marginTop: 8,  
-},
-buttonText: {
+    borderRadius: 10,
+    marginTop: 8,
+  },
+  buttonText: {
     fontSize: 16,
     color: '#4a2f2f',
     fontWeight: '600',
-},
-buttonText2: {
+  },
+  buttonText2: {
     fontSize: 16,
     fontWeight: "600",
     color: '#000',
     marginBottom: 10,
     alignItems: 'center',
 
-},
+  },
 })

@@ -10,13 +10,13 @@ export default class Post extends Component {
       likeado: false,
     };
   }
-  componentDidMount(){
-     let likeado = this.props.data.likes.includes(auth.currentUser.email) 
-     this.setState({
+  componentDidMount() {
+    let likeado = this.props.data.likes.includes(auth.currentUser.email)
+    this.setState({
       likeado: likeado
-     })
+    })
   }
-    
+
   agregarLike() {
     db.collection("posts")
       .doc(this.props.id)
@@ -50,28 +50,28 @@ export default class Post extends Component {
         <Text style={styles.post}>{this.props.data.post}</Text>
         <Text>{this.props.data.descripcion}</Text>
         <View style={styles.botones}>
-        {this.state.likeado ? (
-          <Pressable style={styles.button} onPress={() => this.sacarLike(this.props.id)}>
-            <Text style={styles.buttonText}>Dislike</Text>
+          {this.state.likeado ? (
+            <Pressable style={styles.button} onPress={() => this.sacarLike(this.props.id)}>
+              <Text style={styles.buttonText}>Dislike</Text>
+            </Pressable>
+          ) : (
+            <Pressable style={styles.button} onPress={() => this.agregarLike(this.props.id)}>
+              <Text style={styles.buttonText}>Like</Text>
+            </Pressable>
+          )}
+          <Text>{this.props.data.likes.length} ❤️</Text>
+          <Pressable
+            style={styles.button}
+            onPress={() => this.props.navigation.navigate("Comentarios", { id: this.props.id })}>
+            <Text style={styles.buttonText}>Comentar</Text>
           </Pressable>
-        ) : (
-          <Pressable style={styles.button} onPress={() => this.agregarLike(this.props.id)}>
-            <Text style={styles.buttonText}>Like</Text>
-          </Pressable>
-        )}
-        <Text>{this.props.data.likes.length} ❤️</Text>
-        <Pressable
-        style={styles.button}
-          onPress={() => this.props.navigation.navigate("Comentarios", { id: this.props.id}) }>
-          <Text style={styles.buttonText}>Comentar</Text>
-        </Pressable>
         </View>
       </View>
     );
   }
 }
 const styles = StyleSheet.create({
-  container: {  
+  container: {
     backgroundColor: '#fffafc',
     borderRadius: 15,
     padding: 10,
@@ -80,26 +80,26 @@ const styles = StyleSheet.create({
     borderColor: '#f5b6c2',
   },
   botones: {
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-      alignItems: 'center',
-      marginTop: 8
-  
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginTop: 8
+
   },
   button: {
     backgroundColor: '#f9c5c8',
     width: '20%',
     alignItems: 'center',
     padding: 3,
-    borderRadius: 10, 
- 
-},
-buttonText: {
+    borderRadius: 10,
+
+  },
+  buttonText: {
     fontSize: 10,
     color: '#4a2f2f',
     fontWeight: '600',
-},
-  owner: { fontWeight: "20" , fontSize: 12},
+  },
+  owner: { fontWeight: "20", fontSize: 12 },
   post: { marginTop: 7, fontSize: 18 },
   desc: { color: "#555", marginTop: 4 },
 });

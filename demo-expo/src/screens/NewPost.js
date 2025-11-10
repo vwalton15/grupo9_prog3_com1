@@ -20,9 +20,9 @@ export default class NewPost extends Component {
           comentarios: []
         })
         .then((resp) => {
-          this.setState({post : ""})
+          this.setState({ post: "" })
           this.props.navigation.navigate("StackNavigator2", { screen: "Home" })
-        }) 
+        })
         .catch((err) => console.log(err));
     }
   }

@@ -24,7 +24,7 @@ export default class Comentarios extends Component {
             });
             this.setState({ usuario: usuarioDoc });
             console.log(this.state.usuario);
-            
+
 
             db.collection("posts").where('owner', '==', auth.currentUser.email).onSnapshot((docs) => {
                 let posteosDoc = []
@@ -48,17 +48,18 @@ export default class Comentarios extends Component {
                 {
                     this.state.usuario.length > 0 ?
                         <View><Text style={styles.user}> @{this.state.usuario[0].user}</Text></View>
-                    : null
+                        : null
                 }
                 <Text style={styles.sectionTitle2}>Mis Posteos:</Text>
 
                 {this.state.posteos.length > 0 ? (
-                    <FlatList
+                    <FlatList style={styles.list}
                         data={this.state.posteos}
                         keyExtractor={item => item.id}
-                        renderItem={({ item }) => (<Post data={item.data} id={item.id} />)
+                        renderItem={({ item }) => (<Post data={item.data} id={item.id} navigation={this.props.navigation} />)
                         }
-                    />)  : (<Text style={styles.text}>No hay posteos aún</Text>)}
+
+                    />) : (<Text style={styles.text}>No hay posteos aún</Text>)}
                 <Pressable style={styles.boton} onPress={() => auth.signOut()}>
                     <Text style={styles.botonText}>Desloguearse</Text>
                 </Pressable>
@@ -82,7 +83,9 @@ const styles = StyleSheet.create({
         marginBottom: 12,
         borderWidth: 1,
         borderColor: '#f5b6c2',
-      },
+        alignSelf: 'center',
+        width: '90%',
+    },
     title: {
         fontSize: 24,
         color: '#222',
@@ -94,7 +97,7 @@ const styles = StyleSheet.create({
         margin: 8,
         fontWeight: '300',
         fontFamily: 'Georgia',
-        
+
     },
     sectionTitle: {
         fontSize: 30,
@@ -103,6 +106,9 @@ const styles = StyleSheet.create({
         margin: 8,
         fontWeight: '500',
         marginTop: 60
+    },
+    list: {
+        width: '100%',
     },
     sectionTitle2: {
         fontSize: 25,

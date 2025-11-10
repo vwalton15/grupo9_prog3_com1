@@ -56,27 +56,27 @@ export default class Comentarios extends Component {
           <Text style={styles1.owner}>{this.state.owner}</Text>
           <Text style={styles1.postText}>{this.state.post}</Text>
         </View>
-       
+
         <Text style={styles1.title}>Comentarios</Text>
-        { this.state.comentarios.length != 0 ?
-         <FlatList style={styles1.flatList} data={this.state.comentarios}
-          keyExtractor={(item) => item.createdAt + item.user} 
-          renderItem={({ item }) => (
-          <Comments data={item} />
-        )}/> :
-        <Text>Aún no hay comentarios.</Text> 
+        {this.state.comentarios.length != 0 ?
+          <FlatList style={styles1.flatList} data={this.state.comentarios}
+            keyExtractor={(item) => item.createdAt + item.user}
+            renderItem={({ item }) => (
+              <Comments data={item} />
+            )} /> :
+          <Text>Aún no hay comentarios.</Text>
         }
-         <Text style={styles1.subtitle}>Agrega tu comentario!</Text>
+        <Text style={styles1.subtitle}>Agrega tu comentario!</Text>
         <View style={styles1.formContainer} >
-        <TextInput 
-          placeholder="Deja tu comentario acá.."
-          onChangeText={(text) => this.setState({ comentario: text })}
-          keyboardType="default"
-          value={this.state.comentario}
-        />
-        <Pressable style={styles1.button} onPress={() => this.crearComentario()}>
-          <Text style={styles1.buttonText}>Enviar Comentario</Text>
-        </Pressable>
+          <TextInput
+            placeholder="Deja tu comentario acá.."
+            onChangeText={(text) => this.setState({ comentario: text })}
+            keyboardType="default"
+            value={this.state.comentario}
+          />
+          <Pressable style={styles1.button} onPress={() => this.crearComentario()}>
+            <Text style={styles1.buttonText}>Enviar Comentario</Text>
+          </Pressable>
         </View>
       </View>
     );
@@ -107,9 +107,9 @@ const styles1 = StyleSheet.create({
     borderColor: '#f5b6c2',
     marginTop: 20,
     alignSelf: 'center',
-    maxHeight: 120, 
+    maxHeight: 120,
     marginBottom: 50
-   
+
   },
   flatList: {
     width: '100%',
@@ -126,7 +126,7 @@ const styles1 = StyleSheet.create({
     paddingHorizontal: 12,
     marginBottom: 12,
   },
-    button: {
+  button: {
     backgroundColor: '#f5b6c2',
     paddingVertical: 12,
     borderRadius: 12,
@@ -134,31 +134,33 @@ const styles1 = StyleSheet.create({
     width: '100%',
     marginTop: 20
   },
-    buttonText: {
-      color: '#4a2f2f',
+  buttonText: {
+    color: '#4a2f2f',
     fontWeight: '700',
     fontSize: 16,
   },
-  owner: { fontWeight: "20" , fontSize: 12},
-  post: { marginTop: 7, 
-    fontSize: 18 ,     
-    backgroundColor: '#fffafc',   
+  owner: { fontWeight: "20", fontSize: 12 },
+  post: {
+    marginTop: 7,
+    fontSize: 18,
+    backgroundColor: '#fffafc',
     borderWidth: 3,
     borderColor: '#f5b6c2',
     borderRadius: 16,
     padding: 17,
     marginBottom: 12,
-  width: '85%'},
-    comentarios:{
-      marginTop: 7,
-      marginLeft: 10,
-       fontSize: 13 ,       
-      borderRadius: 18,
-      padding: 10,
-      marginBottom: 12, 
-      fontWeight: "60",
-      width: '75%',
-    },
+    width: '85%'
+  },
+  comentarios: {
+    marginTop: 7,
+    marginLeft: 10,
+    fontSize: 13,
+    borderRadius: 18,
+    padding: 10,
+    marginBottom: 12,
+    fontWeight: "60",
+    width: '75%',
+  },
   desc: { color: "#555", marginTop: 4 },
   commentBox: {
     borderWidth: 1,
@@ -170,7 +172,7 @@ const styles1 = StyleSheet.create({
     width: '65%',
     alignSelf: 'center',
   },
-  subtitle:{
+  subtitle: {
     marginTop: 10
   },
 });

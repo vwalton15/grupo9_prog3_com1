@@ -19,7 +19,10 @@ export default class NewPost extends Component {
           likes: [],
           comentarios: []
         })
-        .then((resp) => this.props.navigation.navigate("StackNavigator2", { screen: "Home" }))
+        .then((resp) => {
+          this.setState({post : ""})
+          this.props.navigation.navigate("StackNavigator2", { screen: "Home" })
+        }) 
         .catch((err) => console.log(err));
     }
   }
@@ -67,7 +70,6 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#f5b6c2',
     marginTop: 20,
-    width: '80%',
   },
 
   input: {

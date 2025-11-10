@@ -26,7 +26,7 @@ export default class Register extends Component {
       return;
     }
 
-    if (!email.includes("@")) {
+    if (!(email.includes("@"))) {
       this.setState({ error: "el mail debe contener @" });
       return;
     }

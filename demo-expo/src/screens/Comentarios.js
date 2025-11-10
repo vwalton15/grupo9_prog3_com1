@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { View, Text, TextInput, Pressable, FlatList, StyleSheet } from "react-native";
 import firebase from "firebase";
 import { db, auth } from "../firebase/config";
+import Comments from '../components/Comments'
 
 export default class Comentarios extends Component {
   constructor(props) {
@@ -58,11 +59,10 @@ export default class Comentarios extends Component {
        
         <Text style={styles1.title}>Comentarios</Text>
         { this.state.comentarios.length != 0 ?
-         <FlatList style={styles1.flatList} data={this.state.comentarios} keyExtractor={(item) => item.id} 
-        renderItem={({ item }) => (
-          <View style={styles1.commentBox}>
-            <Text style={styles1.comentarios}>{item.user}: {item.descripcion}</Text>
-          </View>
+         <FlatList style={styles1.flatList} data={this.state.comentarios}
+          keyExtractor={(item) => item.createdAt + item.user} 
+          renderItem={({ item }) => (
+          <Comments data={item} />
         )}/> :
         <Text>Aún no hay comentarios.</Text> 
         }

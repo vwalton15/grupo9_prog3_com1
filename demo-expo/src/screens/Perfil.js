@@ -2,7 +2,7 @@ import { View, Text, FlatList, Pressable, StyleSheet } from 'react-native'
 import { db, auth } from '../firebase/config';
 import { Component } from 'react';
 import firebase from "firebase";
-
+import Post from '../components/Post'
 
 export default class Comentarios extends Component {
     constructor(props) {
@@ -13,7 +13,6 @@ export default class Comentarios extends Component {
         }
     }
     componentDidMount() {
-
         db.collection("users").where('email', '==', auth.currentUser.email).onSnapshot((docs) => {
             let usuarioDoc = []
             docs.forEach((doc) => {
@@ -25,41 +24,41 @@ export default class Comentarios extends Component {
             });
             this.setState({ usuario: usuarioDoc });
             console.log(this.state.usuario);
+            
 
             db.collection("posts").where('owner', '==', auth.currentUser.email).onSnapshot((docs) => {
                 let posteosDoc = []
                 docs.forEach((doc) => {
                     posteosDoc.push({
                         id: doc.id,
-                        owner: doc.data().owner,
-                        createdAt: doc.data().createdAt,
-                        post: doc.data().post,
+                        data: doc.data()
                     });
                 });
+                console.log(posteosDoc, 'aca')
                 this.setState({ posteos: posteosDoc });
             });
         });
     }
 
     render() {
+        console.log('state usuario', this.state.usuario)
         return (
             <View style={styles.container}>
                 <Text style={styles.sectionTitle}>Mi perfil</Text>
-                <FlatList
-                    data={this.state.usuario}
-                    keyExtractor={item => item.id}
-                    renderItem={({ item }) => <View ><Text style={styles.user}> @{item.user}</Text></View>}
-                />
+                {
+                    this.state.usuario.length > 0 ?
+                        <View><Text style={styles.user}> @{this.state.usuario[0].user}</Text></View>
+                    : null
+                }
                 <Text style={styles.sectionTitle2}>Mis Posteos:</Text>
-                {this.state.posteos.length != 0 ? (
+
+                {this.state.posteos.length > 0 ? (
                     <FlatList
                         data={this.state.posteos}
                         keyExtractor={item => item.id}
-                        renderItem={({ item }) => (<View style={styles.card}><Text style={styles.text}>{item.post}</Text></View>
-                        )
-
+                        renderItem={({ item }) => (<Post data={item.data} id={item.id} />)
                         }
-                    />) : (<Text style={styles.text}>No hay posteos aun</Text>)}
+                    />)  : (<Text style={styles.text}>No hay posteos aún</Text>)}
                 <Pressable style={styles.boton} onPress={() => auth.signOut()}>
                     <Text style={styles.botonText}>Desloguearse</Text>
                 </Pressable>
